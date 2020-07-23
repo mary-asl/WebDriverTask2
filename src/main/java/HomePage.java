@@ -7,7 +7,7 @@ public class HomePage extends AbstractPage {
 
     private static final By EKSMO_LOGO_LOCATOR = By.xpath("//a[@href='/brands/eksmo']");
     private static final By BUTTON_NEXT_BRAND_LOCATOR = By.xpath("//div[9]//a[2]/button[@class='btn-next']");
-    private static final By DISCOUNT_BANNER_LOCATOR = By.id("banner_12529ee6-9afc-449a-b568-6fdfba574386");
+    private static final By DISCOUNT_BANNER_LOCATOR = By.id("banner_323019f5-0db3-4d4d-95b1-b75fb62f21f2");
     private static final By NEXT_BTN_LOCATOR = By.xpath("//div/a[2]/button");
     private static final By SEARCH_INPUT_LOCATOR = By.id("tbSrch");
     private static final By SEARCH_BTN_LOCATOR = By.id("btnSrch");
