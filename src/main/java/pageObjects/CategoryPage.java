@@ -1,3 +1,5 @@
+package pageObjects;
+
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -10,11 +12,11 @@ public class CategoryPage extends AbstractPage {
 
     private static final By ITEM_FROM_LIST_LOCATOR = By.xpath("//div[@class='dtList-inner']");
     private static final By FILTER_BY_RATE_LOCATOR = By.cssSelector("#rate");
-    private static final By ITEMS_RATE_LOCATOR = By.xpath("//div//span/a/span/span/span[2]");
+    private static final By ITEMS_RATE_LOCATOR = By.xpath("//span[@class='dtList-comments-count c-text-sm']");
     private static final By FILTER_BY_PRICE_LOCATOR = By.cssSelector("#price");
-    private static final By ITEMS_PRICE_LOCATOR = By.xpath("//div//span/a//div[2]/span/ins");
-    private static final By FILTER_BY_DISCOUNT_LOCATOR = By.xpath("//div/a[4]/span");
-    private static final By ITEMS_DISCOUNTS_LOCATOR = By.xpath("span.price-sale.active");
+    private static final By ITEMS_PRICE_LOCATOR = By.xpath("//ins[@class='lower-price']");
+    private static final By FILTER_BY_DISCOUNT_LOCATOR = By.xpath("//div/a[@id='sale']/span");
+    private static final By ITEMS_DISCOUNTS_LOCATOR = By.cssSelector("span.price-sale.active");
     private static final By ITEMS_NAME_LOCATOR = By.xpath("//span[@class='goods-name c-text-sm']");
     private static final By SEARCH_INPUT_LOCATOR = By.id("tbSrch");
 
@@ -39,14 +41,17 @@ public class CategoryPage extends AbstractPage {
     }
 
     public List<WebElement> getItemsRate() {
+        waitForElementVisible(ITEMS_RATE_LOCATOR);
         return getDriver().findElements(ITEMS_RATE_LOCATOR);
     }
 
     public List<WebElement> getItemsPrice() {
+        waitForElementVisible(ITEMS_PRICE_LOCATOR);
         return getDriver().findElements(ITEMS_PRICE_LOCATOR);
     }
 
     public List<WebElement> getItemsDiscount() {
+        waitForElementVisible(ITEMS_DISCOUNTS_LOCATOR);
         return getDriver().findElements(ITEMS_DISCOUNTS_LOCATOR);
     }
 
@@ -99,10 +104,6 @@ public class CategoryPage extends AbstractPage {
 
     public Boolean areItemsDisplayed(){
         return getDriver().findElement(ITEM_FROM_LIST_LOCATOR).isDisplayed();
-    }
-
-    public List<WebElement> getItemsDiscounts() {
-        return getDriver().findElements(ITEMS_DISCOUNTS_LOCATOR);
     }
 
 }

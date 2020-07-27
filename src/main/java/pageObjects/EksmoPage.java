@@ -1,3 +1,5 @@
+package pageObjects;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -5,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class EksmoPage extends AbstractPage {
 
     private static final By CATEGORY_BANNERS_LOCATOR = By.id("newsSmallBanners");
-    private static final By PSYCHOLOGY_CATEGORY_LOCATOR = By.xpath("//div[@class='small-banners']/div[5]");
+    private static final By PSYCHOLOGY_CATEGORY_LOCATOR = By.xpath("//div[@class='small-banners']/div[@class='number-5']");
 
     public EksmoPage(WebDriver driver) {
         super(driver);

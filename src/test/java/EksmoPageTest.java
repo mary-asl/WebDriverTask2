@@ -1,12 +1,72 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.CategoryPage;
+import pageObjects.EksmoPage;
+import pageObjects.HomePage;
+import pageObjects.ItemPage;
+
+import java.util.List;
 
 
 public class EksmoPageTest extends BaseForAllTests {
 
+    private static final String EKSMO_PAGE_LINK = "https://www.wildberries.kz/brands/eksmo";
+
+    @Test
+    public void filterByDiscount() {
+        boolean actual = false;
+        EksmoPage eksmoPage = new HomePage(driver).clickBrandLogo().selectCategory();
+        CategoryPage categoryPage = new CategoryPage(driver).filterByDiscount();
+        List<Double> doubleDiscounts = categoryPage.parseDoubleDiscount();
+        for (int i = 0; i < doubleDiscounts.size(); i++) {
+            for (int j = i + 1; j < doubleDiscounts.size(); j++) {
+                if (doubleDiscounts.get(i) > doubleDiscounts.get(j)) {
+                    actual = false;
+                    break;
+                } else
+                    actual = true;
+            }
+        }
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void filterByRate() {
+        CategoryPage categoryPage = new CategoryPage(driver).filterByRate();
+        boolean actual = false;
+        List<Integer> integerRates = categoryPage.parseIntRates();
+        for (int i = 0; i < integerRates.size(); i++) {
+            for (int j = i + 1; j < integerRates.size(); j++) {
+                if (integerRates.get(i) < integerRates.get(j)) {
+                    actual = false;
+                    break;
+                } else
+                    actual = true;
+            }
+        }
+        Assert.assertTrue(actual);
+    }
+
+    @Test
+    public void filterByPrice() {
+        boolean actual = false;
+        CategoryPage categoryPage = new CategoryPage(driver).filterByPrice();
+        List<Integer> integerPrices = categoryPage.parseIntPrices();
+        for (int i = 0; i < integerPrices.size(); i++) {
+            for (int j = i + 1; j < integerPrices.size(); j++) {
+                if (integerPrices.get(i) > integerPrices.get(j)) {
+                    actual = false;
+                    break;
+                } else actual = true;
+            }
+        }
+        Assert.assertTrue(actual);
+    }
+
     @Test(description = "Verify that categories are displayed on the page")
     public void verifyDisplayedCategory() {
-        EksmoPage eksmoPage = new HomePage(driver).clickBrandLogo();
+        driver.navigate().to(EKSMO_PAGE_LINK);
+        EksmoPage eksmoPage = new EksmoPage(driver);
         Assert.assertTrue(eksmoPage.findCategoryBanners().isDisplayed());
     }
 
@@ -16,54 +76,5 @@ public class EksmoPageTest extends BaseForAllTests {
         itemPage.readAllInformation();
         String expected = "Психология";
         Assert.assertEquals(itemPage.getCategory(), expected);
-        driver.navigate().back();
-    }
-
-    @Test
-    public void filterByRate() {
-        EksmoPage eksmoPage = new EksmoPage(driver).selectCategory();
-        CategoryPage categoryPage = new CategoryPage(driver).filterByRate();
-        boolean actual = true;
-        for (int i = 0; i < categoryPage.getItemsRate().size(); i++) {
-            for (int j = i + 1; j < categoryPage.getItemsRate().size(); j++) {
-                if (categoryPage.parseIntRates().get(i) < categoryPage.parseIntRates().get(j)) {
-                    actual = false;
-                    break;
-                }
-            }
-        }
-        Assert.assertTrue(actual);
-    }
-
-    @Test
-    public void filterByPrice() {
-        boolean actual = true;
-        CategoryPage categoryPage = new CategoryPage(driver).filterByPrice();
-
-        for (int i = 0; i < categoryPage.getItemsPrice().size(); i++) {
-            for (int j = i + 1; j < categoryPage.getItemsPrice().size(); j++) {
-                if (categoryPage.parseIntPrices().get(i) > categoryPage.parseIntPrices().get(j)) {
-                    actual = false;
-                    break;
-                }
-            }
-        }
-        Assert.assertTrue(actual);
-    }
-
-    @Test
-    public void filterByDiscount() {
-        boolean actual = true;
-        CategoryPage categoryPage = new CategoryPage(driver).filterByDiscount();
-
-        for (int i = 0; i < categoryPage.getItemsDiscount().size(); i++) {
-            for (int j = i + 1; j < categoryPage.getItemsDiscount().size(); j++) {
-                if (categoryPage.parseDoubleDiscount().get(i) > categoryPage.parseDoubleDiscount().get(j)) {
-                    actual = false;
-                    break;
-                }
-            }
-        }
-        Assert.assertTrue(actual);
     }
 }

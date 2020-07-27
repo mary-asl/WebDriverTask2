@@ -1,14 +1,19 @@
+package pageObjects;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import pageObjects.AbstractPage;
+import pageObjects.CategoryPage;
+import pageObjects.EksmoPage;
 
 public class HomePage extends AbstractPage {
 
     private static final By EKSMO_LOGO_LOCATOR = By.xpath("//a[@href='/brands/eksmo']");
-    private static final By BUTTON_NEXT_BRAND_LOCATOR = By.xpath("//div[9]//a[2]/button[@class='btn-next']");
-    private static final By DISCOUNT_BANNER_LOCATOR = By.id("banner_323019f5-0db3-4d4d-95b1-b75fb62f21f2");
-    private static final By NEXT_BTN_LOCATOR = By.xpath("//div/a[2]/button");
+    private static final By BUTTON_NEXT_BRAND_LOCATOR = By.xpath("//div[@class='brands-pane j-brands-slider-wrapper i-slider-brand-pane']//a[@class='lSNext']/button");
+    private static final By PROMO_PAGE_LOCATOR = By.xpath(".//a[contains(@href,'/promotions/chistim-sklad')]");
+    private static final By NEXT_BTN_LOCATOR = By.xpath("//div/a/button[@class='btn-next']");
     private static final By SEARCH_INPUT_LOCATOR = By.id("tbSrch");
     private static final By SEARCH_BTN_LOCATOR = By.id("btnSrch");
 
@@ -16,12 +21,12 @@ public class HomePage extends AbstractPage {
         super(driver);
     }
 
-    public CategoryPage clickToBanner() {
+    public CategoryPage clickToDiscountPage() {
         do {
             getDriver().findElement(NEXT_BTN_LOCATOR).click();
         }
-        while (!getDriver().findElement(DISCOUNT_BANNER_LOCATOR).isDisplayed());
-        getDriver().findElement(DISCOUNT_BANNER_LOCATOR).click(); // Click on the banner "50% discount"
+        while (!getDriver().findElement(PROMO_PAGE_LOCATOR).isDisplayed());
+        getDriver().findElement(PROMO_PAGE_LOCATOR).click();
         return new CategoryPage(getDriver());
     }
 

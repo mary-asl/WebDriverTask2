@@ -1,3 +1,5 @@
+package pageObjects;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.NoSuchElementException;
@@ -7,7 +9,7 @@ public class ItemPage extends AbstractPage {
 
     private static final By READ_ALL_INFORM_BTN = By.xpath("//span//div[@class='for-link']/div[@class='c-link-in3-v1']");
     private static final By ACTUAL_ITEM_CATEGORY = By.xpath("//div[@class='params']//div//span[b='Жанры/тематика']/following::span[1]");
-    private static final By ITEMS_SIZE_LOCATOR = By.xpath("//div[@class='i-sizes-block-v1']/label/span");
+    private static final By ITEMS_SIZE_LOCATOR = By.xpath("//label[@data-size-name]");
     private static final By FAVORITES_BTN_LOCATOR = By.xpath("//div[@class='order']/button");
 
     public ItemPage(WebDriver driver) {
@@ -23,12 +25,12 @@ public class ItemPage extends AbstractPage {
             check = false;
         }
         if (check)
-            getDriver().findElement(ITEMS_SIZE_LOCATOR).click(); //select size if it's possible;
+            getDriver().findElement(ITEMS_SIZE_LOCATOR).click();
         return this;
     }
 
     public SignInPage addToFavorites(){
-        getDriver().findElement(FAVORITES_BTN_LOCATOR).click(); //add to favorites
+        getDriver().findElement(FAVORITES_BTN_LOCATOR).click();
         return new SignInPage(getDriver());
     }
 

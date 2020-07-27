@@ -1,34 +1,40 @@
 import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.CategoryPage;
+import pageObjects.HomePage;
+import pageObjects.SignInPage;
 
 public class TextSearchTest extends BaseForAllTests {
-    @Test
-    public void verifyPageTitle() {
-        HomePage homePage = new HomePage(driver);
-        String lookingForToy = "funko pop star wars";
-        homePage.searchForItem(lookingForToy);
-        Assert.assertEquals(driver.getTitle(), lookingForToy);
-    }
 
-    @Test(dependsOnMethods = "verifyPageTitle")
+    private static final String LOOKING_FOR_ITEM = "funko pop star wars";
+
+    @Test
     public void isItemFound() {
-        CategoryPage categoryPage = new CategoryPage(driver);
-        boolean actual = true;
+        CategoryPage categoryPage = new HomePage(driver).searchForItem(LOOKING_FOR_ITEM);
+        boolean actual = false;
         String[] subStr = categoryPage.getInputValue().split(" ");
         for(int i = 0; i < subStr.length; i++) {
             if(!StringUtils.containsIgnoreCase(categoryPage.getSearchingItemName(), subStr[i])){
                 actual = false;
                 break;
             }
+            else
+                actual = true;
         }
         Assert.assertTrue(actual);
     }
 
-    @Test(dependsOnMethods = "isItemFound")
+    @Test
+    public void verifyPageTitle() {
+        new HomePage(driver).searchForItem(LOOKING_FOR_ITEM);
+        Assert.assertEquals(driver.getTitle(), LOOKING_FOR_ITEM);
+    }
+
+    @Test
     public void verifyFavorites() {
         CategoryPage categoryPage = new CategoryPage(driver);
-        categoryPage.selectItem().selectSize().addToFavorites();
+        categoryPage.selectItem().addToFavorites();
         Assert.assertTrue(new SignInPage(driver).signInByPhoneNum());
     }
 
