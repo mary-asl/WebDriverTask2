@@ -5,7 +5,7 @@ import org.testng.annotations.BeforeClass;
 
 import java.util.concurrent.TimeUnit;
 
-public class BaseForAllTests {
+public abstract class BaseForAllTests {
 
     protected WebDriver driver;
     protected String baseUrl = "https://www.wildberries.kz";
@@ -14,13 +14,13 @@ public class BaseForAllTests {
     public void initWebDriver() {
         System.setProperty("webdriver.gecko.driver", "./src/main/resources/gecko/geckodriver.exe");
         driver = new FirefoxDriver();
-        driver.get(baseUrl); // Open the www.wildberries.kz. in the FireFox browser
+        driver.get(baseUrl);
         driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
     }
 
     @AfterClass
-    public void close(){
-        driver.close();
+    public void quit() {
+        driver.quit();
     }
 }

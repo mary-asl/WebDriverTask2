@@ -15,7 +15,7 @@ public class CategoryPage extends AbstractPage {
     private static final By ITEMS_PRICE_LOCATOR = By.xpath("//div//span/a//div[2]/span/ins");
     private static final By FILTER_BY_DISCOUNT_LOCATOR = By.xpath("//div/a[4]/span");
     private static final By ITEMS_DISCOUNTS_LOCATOR = By.xpath("span.price-sale.active");
-    private static final By ITEMS_NAME_LOCATOR = By.xpath("//div[@class = 'dtlist-inner-brand']/div[3]/span");
+    private static final By ITEMS_NAME_LOCATOR = By.xpath("//span[@class='goods-name c-text-sm']");
     private static final By SEARCH_INPUT_LOCATOR = By.id("tbSrch");
 
     public CategoryPage(WebDriver driver) {

@@ -3,9 +3,9 @@
 <suite name="Wildberries" verbose="1" parallel="classes" thread-count="3">
     <test name="Wildberries">
         <classes>
-            <class name="SecondScript"></class>
-            <class name="FirstScript"></class>
-            <class name="ThirdScript"></class>
+            <class name="EksmoPageTest"></class>
+            <class name="PromoActionsTest"></class>
+            <class name="TextSearchTest"></class>
         </classes>
     </test>
 

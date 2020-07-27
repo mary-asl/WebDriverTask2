@@ -2,15 +2,15 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class SecondScript extends BaseForAllTests {
+public class EksmoPageTest extends BaseForAllTests {
 
-    @Test(description = "Verify that category banners are displayed on the page")
+    @Test(description = "Verify that categories are displayed on the page")
     public void verifyDisplayedCategory() {
         EksmoPage eksmoPage = new HomePage(driver).clickBrandLogo();
         Assert.assertTrue(eksmoPage.findCategoryBanners().isDisplayed());
     }
 
-    @Test(dependsOnMethods = "verifyDisplayedCategory")
+    @Test
     public void isCategoryCorrect() {
         ItemPage itemPage = new CategoryPage(driver).selectItem();
         itemPage.readAllInformation();
@@ -19,7 +19,7 @@ public class SecondScript extends BaseForAllTests {
         driver.navigate().back();
     }
 
-    @Test(dependsOnMethods = "verifyDisplayedCategory")
+    @Test
     public void filterByRate() {
         EksmoPage eksmoPage = new EksmoPage(driver).selectCategory();
         CategoryPage categoryPage = new CategoryPage(driver).filterByRate();
@@ -35,7 +35,7 @@ public class SecondScript extends BaseForAllTests {
         Assert.assertTrue(actual);
     }
 
-    @Test(dependsOnMethods = "verifyDisplayedCategory", priority = 1)
+    @Test
     public void filterByPrice() {
         boolean actual = true;
         CategoryPage categoryPage = new CategoryPage(driver).filterByPrice();
@@ -51,7 +51,7 @@ public class SecondScript extends BaseForAllTests {
         Assert.assertTrue(actual);
     }
 
-    @Test(dependsOnMethods = "filterByPrice")
+    @Test
     public void filterByDiscount() {
         boolean actual = true;
         CategoryPage categoryPage = new CategoryPage(driver).filterByDiscount();

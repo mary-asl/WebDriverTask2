@@ -2,7 +2,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 
-public class FirstScript extends BaseForAllTests {
+public class PromoActionsTest extends BaseForAllTests {
 
     @Test(description = "Verify that items are displayed")
     public void verifyDisplayedItems() {
@@ -10,7 +10,7 @@ public class FirstScript extends BaseForAllTests {
         Assert.assertTrue(categoryPage.areItemsDisplayed());
     }
 
-    @Test(dependsOnMethods = "verifyDisplayedItems") // Verify that all displayed items have discount since 50%
+    @Test
     public void verifyDiscount() {
         boolean actual = true;
         CategoryPage categoryPage = new CategoryPage(driver);
@@ -23,7 +23,7 @@ public class FirstScript extends BaseForAllTests {
         Assert.assertTrue(actual);
     }
 
-    @Test(dependsOnMethods = "verifyDisplayedItems")
+    @Test
     public void verifyFavorites() {
         CategoryPage categoryPage = new CategoryPage(driver);
         categoryPage.selectItem().selectSize().addToFavorites();

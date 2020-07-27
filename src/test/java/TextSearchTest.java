@@ -2,7 +2,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ThirdScript extends BaseForAllTests {
+public class TextSearchTest extends BaseForAllTests {
     @Test
     public void verifyPageTitle() {
         HomePage homePage = new HomePage(driver);
