@@ -1,4 +1,3 @@
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.CategoryPage;
@@ -28,13 +27,13 @@ public class PromoActionsTest extends BaseForAllTests {
 
     @Test(description = "Verify that items are displayed")
     public void verifyDisplayedItems() {
-        CategoryPage categoryPage = new CategoryPage(driver);
+        CategoryPage categoryPage = new HomePage(driver).clickToDiscountPage();
         Assert.assertTrue(categoryPage.areItemsDisplayed());
     }
 
     @Test
     public void verifyFavorites() {
-        CategoryPage categoryPage = new CategoryPage(driver);
+        CategoryPage categoryPage = new HomePage(driver).clickToDiscountPage();
         categoryPage.selectItem().selectSize().addToFavorites();
         Assert.assertTrue(new SignInPage(driver).signInByPhoneNum());
     }

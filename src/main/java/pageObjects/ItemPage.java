@@ -2,7 +2,6 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 public class ItemPage extends AbstractPage {
@@ -16,20 +15,13 @@ public class ItemPage extends AbstractPage {
         super(driver);
     }
 
-    public ItemPage selectSize(){
-        boolean check;
-        try {
-            getDriver().findElement(ITEMS_SIZE_LOCATOR);
-            check = true;
-        } catch (NoSuchElementException e) {
-            check = false;
-        }
-        if (check)
+    public ItemPage selectSize() {
+        if (getDriver().findElement(ITEMS_SIZE_LOCATOR).isDisplayed())
             getDriver().findElement(ITEMS_SIZE_LOCATOR).click();
         return this;
     }
 
-    public SignInPage addToFavorites(){
+    public SignInPage addToFavorites() {
         getDriver().findElement(FAVORITES_BTN_LOCATOR).click();
         return new SignInPage(getDriver());
     }
@@ -43,7 +35,7 @@ public class ItemPage extends AbstractPage {
         return this;
     }
 
-    public String getCategory(){
+    public String getCategory() {
         String actualCategory = getDriver().findElement(ACTUAL_ITEM_CATEGORY).getText();
         return actualCategory;
     }

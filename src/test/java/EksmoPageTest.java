@@ -18,11 +18,12 @@ public class EksmoPageTest extends BaseForAllTests {
         EksmoPage eksmoPage = new HomePage(driver).clickBrandLogo().selectCategory();
         CategoryPage categoryPage = new CategoryPage(driver).filterByDiscount();
         List<Double> doubleDiscounts = categoryPage.parseDoubleDiscount();
+        outerloop:
         for (int i = 0; i < doubleDiscounts.size(); i++) {
             for (int j = i + 1; j < doubleDiscounts.size(); j++) {
                 if (doubleDiscounts.get(i) > doubleDiscounts.get(j)) {
                     actual = false;
-                    break;
+                    break outerloop;
                 } else
                     actual = true;
             }
@@ -35,15 +36,17 @@ public class EksmoPageTest extends BaseForAllTests {
         CategoryPage categoryPage = new CategoryPage(driver).filterByRate();
         boolean actual = false;
         List<Integer> integerRates = categoryPage.parseIntRates();
+        outerloop:
         for (int i = 0; i < integerRates.size(); i++) {
             for (int j = i + 1; j < integerRates.size(); j++) {
                 if (integerRates.get(i) < integerRates.get(j)) {
                     actual = false;
-                    break;
+                    break outerloop;
                 } else
                     actual = true;
             }
         }
+
         Assert.assertTrue(actual);
     }
 
@@ -52,11 +55,12 @@ public class EksmoPageTest extends BaseForAllTests {
         boolean actual = false;
         CategoryPage categoryPage = new CategoryPage(driver).filterByPrice();
         List<Integer> integerPrices = categoryPage.parseIntPrices();
+        outerloop:
         for (int i = 0; i < integerPrices.size(); i++) {
             for (int j = i + 1; j < integerPrices.size(); j++) {
                 if (integerPrices.get(i) > integerPrices.get(j)) {
                     actual = false;
-                    break;
+                    break outerloop;
                 } else actual = true;
             }
         }

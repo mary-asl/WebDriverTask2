@@ -5,6 +5,8 @@ import pageObjects.CategoryPage;
 import pageObjects.HomePage;
 import pageObjects.SignInPage;
 
+import java.util.concurrent.TimeUnit;
+
 public class TextSearchTest extends BaseForAllTests {
 
     private static final String LOOKING_FOR_ITEM = "funko pop star wars";
@@ -13,6 +15,7 @@ public class TextSearchTest extends BaseForAllTests {
     public void isItemFound() {
         CategoryPage categoryPage = new HomePage(driver).searchForItem(LOOKING_FOR_ITEM);
         boolean actual = false;
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         String[] subStr = categoryPage.getInputValue().split(" ");
         for(int i = 0; i < subStr.length; i++) {
             if(!StringUtils.containsIgnoreCase(categoryPage.getSearchingItemName(), subStr[i])){
@@ -27,15 +30,9 @@ public class TextSearchTest extends BaseForAllTests {
 
     @Test
     public void verifyPageTitle() {
-        new HomePage(driver).searchForItem(LOOKING_FOR_ITEM);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        new HomePage(driver).cleanInputSearch().searchForItem(LOOKING_FOR_ITEM);
         Assert.assertEquals(driver.getTitle(), LOOKING_FOR_ITEM);
-    }
-
-    @Test
-    public void verifyFavorites() {
-        CategoryPage categoryPage = new CategoryPage(driver);
-        categoryPage.selectItem().addToFavorites();
-        Assert.assertTrue(new SignInPage(driver).signInByPhoneNum());
     }
 
 }
