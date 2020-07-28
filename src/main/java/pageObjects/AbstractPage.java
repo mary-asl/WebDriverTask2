@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class AbstractPage {
-    public static final int WAIT_FOR_ELEMENT_SECONDS = 15;
+    public static final int WAIT_FOR_ELEMENT_SECONDS = 20;
     private WebDriver driver;
 
     public AbstractPage(WebDriver driver) {

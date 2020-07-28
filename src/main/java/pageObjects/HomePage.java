@@ -45,8 +45,9 @@ public class HomePage extends AbstractPage {
     }
 
     public EksmoPage clickBrandLogo() {
-        ((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(0,4700)");
+        ((JavascriptExecutor) getDriver()).executeScript("window.scrollBy(0,4650)");
         WebElement buttonNext = getDriver().findElement(BUTTON_NEXT_BRAND_LOCATOR);
+        waitForElementVisible(BUTTON_NEXT_BRAND_LOCATOR);
         String js = String.format("window.scroll(0, %s)", buttonNext.getLocation().getY());
         ((JavascriptExecutor) getDriver()).executeScript(js);
         waitForElementEnabled(BUTTON_NEXT_BRAND_LOCATOR);

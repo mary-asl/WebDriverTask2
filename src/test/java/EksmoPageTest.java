@@ -46,7 +46,6 @@ public class EksmoPageTest extends BaseForAllTests {
                     actual = true;
             }
         }
-
         Assert.assertTrue(actual);
     }
 

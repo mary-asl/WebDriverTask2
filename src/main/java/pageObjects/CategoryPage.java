@@ -24,6 +24,7 @@ public class CategoryPage extends AbstractPage {
     }
 
     public ItemPage selectItem() {
+        waitForElementVisible(ITEM_FROM_LIST_LOCATOR);
         getDriver().findElement(ITEM_FROM_LIST_LOCATOR).click();
         return new ItemPage(getDriver());
     }
