@@ -15,7 +15,7 @@ public abstract class BaseForAllTests {
     public void initWebDriver() {
         System.setProperty("webdriver.gecko.driver", "./src/main/resources/gecko/geckodriver.exe");
         driver = new FirefoxDriver();
-        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
         try{
             driver.get(BASE_URL);
         }catch(WebDriverException e){

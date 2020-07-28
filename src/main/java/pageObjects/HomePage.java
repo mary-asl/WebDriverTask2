@@ -37,7 +37,9 @@ public class HomePage extends AbstractPage {
     }
 
     public CategoryPage searchForItem(String item) {
+        waitForElementVisible(SEARCH_INPUT_LOCATOR);
         getDriver().findElement(SEARCH_INPUT_LOCATOR).sendKeys(item);
+        waitForElementVisible(SEARCH_BTN_LOCATOR);
         getDriver().findElement(SEARCH_BTN_LOCATOR).click();
         return new CategoryPage(getDriver());
     }

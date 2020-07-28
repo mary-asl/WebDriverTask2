@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 
 public class EksmoPage extends AbstractPage {
 
-    private static final By CATEGORY_BANNERS_LOCATOR = By.id("newsSmallBanners");
+    private static final By CATEGORIES_LOCATOR = By.id("newsSmallBanners");
     private static final By PSYCHOLOGY_CATEGORY_LOCATOR = By.xpath("//div[@class='small-banners']/div[@class='number-5']");
 
     public EksmoPage(WebDriver driver) {
@@ -14,8 +14,8 @@ public class EksmoPage extends AbstractPage {
     }
 
     public WebElement findCategoryBanners() {
-        waitForElementVisible(CATEGORY_BANNERS_LOCATOR);
-        return getDriver().findElement(CATEGORY_BANNERS_LOCATOR);
+        waitForElementVisible(CATEGORIES_LOCATOR);
+        return getDriver().findElement(CATEGORIES_LOCATOR);
     }
 
     public EksmoPage selectCategory() {

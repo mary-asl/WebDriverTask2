@@ -19,19 +19,19 @@ public abstract class AbstractPage {
         return this.driver;
     }
 
-    public boolean isElementPresent(By locator){
+    public boolean isElementPresent(By locator) {
         return !driver.findElements(locator).isEmpty();
     }
 
-    public void waitForElementPresent(By locator){
+    public void waitForElementPresent(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }
 
-    public void waitForElementVisible(By locator){
+    public void waitForElementVisible(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
-    public void waitForElementEnabled(By locator){
+    public void waitForElementEnabled(By locator) {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.elementToBeClickable(locator));
     }
 }
