@@ -2,7 +2,6 @@ package pageObjects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import pageObjects.AbstractPage;
 
 public class SignInPage extends AbstractPage {
 

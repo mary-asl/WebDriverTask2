@@ -6,6 +6,7 @@
             <class name="EksmoPageTest"></class>
             <class name="PromoActionsTest"></class>
             <class name="TextSearchTest"></class>
+            <class name="DropdownListsTest"></class>
         </classes>
     </test>
 
