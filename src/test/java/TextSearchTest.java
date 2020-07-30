@@ -3,7 +3,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import pageObjects.CategoryPage;
 import pageObjects.HomePage;
-import pageObjects.SignInPage;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,7 +10,7 @@ public class TextSearchTest extends BaseForAllTests {
 
     private static final String LOOKING_FOR_ITEM = "funko pop star wars";
 
-    @Test
+    @Test(description = "verify that found item's name contains words from text search")
     public void isItemFound() {
         CategoryPage categoryPage = new HomePage(driver).searchForItem(LOOKING_FOR_ITEM);
         boolean actual = false;
@@ -25,14 +24,14 @@ public class TextSearchTest extends BaseForAllTests {
             else
                 actual = true;
         }
-        Assert.assertTrue(actual);
+        Assert.assertTrue(actual, "expected item is not found");
     }
 
-    @Test
+    @Test(description = "verify that page title changed to searching item's name")
     public void verifyPageTitle() {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         new HomePage(driver).cleanInputSearch().searchForItem(LOOKING_FOR_ITEM);
-        Assert.assertEquals(driver.getTitle(), LOOKING_FOR_ITEM);
+        Assert.assertEquals(driver.getTitle(), LOOKING_FOR_ITEM, "incorrect page title");
     }
 
 }

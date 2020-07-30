@@ -8,6 +8,8 @@ import java.util.List;
 public class Runner {
     public static void main(String[] args) {
 
+        System.setProperty("Log4j.configurationFile", "/src/main/resources/log4j.xml");
+
         TestListenerAdapter tla = new TestListenerAdapter();
         TestNG tng = new TestNG();
         tng.addListener(tla);

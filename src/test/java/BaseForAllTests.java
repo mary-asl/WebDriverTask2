@@ -3,13 +3,15 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
-
 import java.util.concurrent.TimeUnit;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class BaseForAllTests {
 
     protected WebDriver driver;
     private static final String BASE_URL = "https://www.wildberries.kz";
+    public Logger logger = LogManager.getLogger();
 
     @BeforeClass
     public void initWebDriver() {
@@ -28,4 +30,5 @@ public abstract class BaseForAllTests {
     public void quit() {
         driver.quit();
     }
+
 }

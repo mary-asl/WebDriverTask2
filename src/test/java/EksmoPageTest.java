@@ -12,7 +12,7 @@ public class EksmoPageTest extends BaseForAllTests {
 
     private static final String EKSMO_PAGE_LINK = "https://www.wildberries.kz/brands/eksmo";
 
-    @Test
+    @Test(description = "verify that items filtered by discount")
     public void filterByDiscount() {
         boolean actual = false;
         EksmoPage eksmoPage = new HomePage(driver).clickBrandLogo().selectCategory();
@@ -28,10 +28,10 @@ public class EksmoPageTest extends BaseForAllTests {
                     actual = true;
             }
         }
-        Assert.assertTrue(actual);
+        Assert.assertTrue(actual, "filter by discount does not sort items correctly");
     }
 
-    @Test
+    @Test(description = "verify that items filtered by rate")
     public void filterByRate() {
         CategoryPage categoryPage = new CategoryPage(driver).filterByRate();
         boolean actual = false;
@@ -46,10 +46,10 @@ public class EksmoPageTest extends BaseForAllTests {
                     actual = true;
             }
         }
-        Assert.assertTrue(actual);
+        Assert.assertTrue(actual, "filter by rate does not sort items correctly");
     }
 
-    @Test
+    @Test(description = "verify that items filtered by price")
     public void filterByPrice() {
         boolean actual = false;
         CategoryPage categoryPage = new CategoryPage(driver).filterByPrice();
@@ -63,21 +63,21 @@ public class EksmoPageTest extends BaseForAllTests {
                 } else actual = true;
             }
         }
-        Assert.assertTrue(actual);
+        Assert.assertTrue(actual, "filter by price does not sort items correctly");
     }
 
     @Test(description = "Verify that categories are displayed on the page")
     public void verifyDisplayedCategory() {
         driver.navigate().to(EKSMO_PAGE_LINK);
         EksmoPage eksmoPage = new EksmoPage(driver);
-        Assert.assertTrue(eksmoPage.findCategoryBanners().isDisplayed());
+        Assert.assertTrue(eksmoPage.findCategoryBanners().isDisplayed(), "there are no categories on the shop's page");
     }
 
-    @Test
+    @Test(description = "verify that displayed item corresponds to the selected category")
     public void isCategoryCorrect() {
         ItemPage itemPage = new CategoryPage(driver).selectItem();
         itemPage.readAllInformation();
         String expected = "Психология";
-        Assert.assertEquals(itemPage.getCategory(), expected);
+        Assert.assertEquals(itemPage.getCategory(), expected, "the item category does not match the selected category");
     }
 }
