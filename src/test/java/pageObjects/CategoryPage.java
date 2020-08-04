@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import utils.Screenshoter;
 
 import java.util.*;
 
@@ -60,7 +61,7 @@ public class CategoryPage extends AbstractPage {
         waitForElementVisible(FILTER_BY_RATE_LOCATOR);
         highlightElement(FILTER_BY_RATE_LOCATOR);
         getDriver().findElement(FILTER_BY_RATE_LOCATOR).click();
-        makeFullPageScreenshot();
+        Screenshoter.makeFullPageScreenshot(getDriver());
         unHighlightElement(FILTER_BY_RATE_LOCATOR);
         return this;
     }
@@ -69,7 +70,7 @@ public class CategoryPage extends AbstractPage {
         waitForElementVisible(FILTER_BY_PRICE_BTN_LOCATOR);
         highlightElement(FILTER_BY_PRICE_BTN_LOCATOR);
         getDriver().findElement(FILTER_BY_PRICE_BTN_LOCATOR).click();
-        makeFullPageScreenshot();
+        Screenshoter.makeFullPageScreenshot(getDriver());
         unHighlightElement(FILTER_BY_PRICE_BTN_LOCATOR);
         return this;
     }
@@ -78,7 +79,7 @@ public class CategoryPage extends AbstractPage {
         waitForElementVisible(FILTER_BY_DISCOUNT_BTN_LOCATOR);
         highlightElement(FILTER_BY_DISCOUNT_BTN_LOCATOR);
         getDriver().findElement(FILTER_BY_DISCOUNT_BTN_LOCATOR).click();
-        makeFullPageScreenshot();
+        Screenshoter.makeFullPageScreenshot(getDriver());
         unHighlightElement(FILTER_BY_DISCOUNT_BTN_LOCATOR);
         return this;
     }
