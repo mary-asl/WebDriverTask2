@@ -11,7 +11,7 @@ public class HomePage extends AbstractPage {
     private static final By EKSMO_LOGO_LOCATOR = By.xpath("//a[@href='/brands/eksmo']");
     private static final By ITEM_FROM_LIST_LOCATOR = By.xpath("//div[@class='dtList-inner']");
     private static final By BUTTON_NEXT_BRAND_LOCATOR = By.xpath("//div[@class='brands-pane j-brands-slider-wrapper i-slider-brand-pane']//a[@class='lSNext']/button");
-    private static final By PROMO_PAGE_LOCATOR = By.xpath(".//a[contains(@href,'/promotions')]");
+    private static final By PROMO_PAGE_LOCATOR = By.xpath(".//a[contains(@href,'/promotions/super-tseny-na-super-brendy?sort=popular&bid=b4403336-2bae-4496-b7a2-26643ec6d512')]");
     private static final By NEXT_BTN_LOCATOR = By.xpath("//div/a/button[@class='btn-next']");
     private static final By SEARCH_INPUT_LOCATOR = By.id("tbSrch");
     private static final By SEARCH_BTN_LOCATOR = By.id("btnSrch");
