@@ -8,7 +8,7 @@ import org.openqa.selenium.interactions.Actions;
 
 public class HomePage extends AbstractPage {
 
-    private static final By EKSMO_LOGO_LOCATOR = By.xpath("//a[@href='/brands/eksmo']");
+    private static final By EKSMO_LOGO_LOCATOR = By.xpath("//a[@href='/promotions']");
     private static final By ITEM_FROM_LIST_LOCATOR = By.xpath("//div[@class='dtList-inner']");
     private static final By BUTTON_NEXT_BRAND_LOCATOR = By.xpath("//div[@class='brands-pane j-brands-slider-wrapper i-slider-brand-pane']//a[@class='lSNext']/button");
     private static final By PROMO_PAGE_LOCATOR = By.xpath(".//a[contains(@href,'/big_brands')]");
