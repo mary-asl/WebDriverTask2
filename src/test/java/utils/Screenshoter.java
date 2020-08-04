@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class Screenshoter {
 
-    public static final int WAIT_FOR_ELEMENT_SECONDS = 20;
     private static final String SCREENSHOTS_NAME_TPL = "screenshots/src";
     public static Logger logger = LogManager.getLogger();
 
